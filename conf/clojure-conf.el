@@ -10,7 +10,12 @@
   :after flycheck cider
   :pin melpa
   :mode (("\\.clj\\'" . clojure-mode)
-         ("\\.cljs\\'" . clojurescript-mode)))
+         ("\\.cljs\\'" . clojurescript-mode))
+  :init
+  ;; indent fn-traced and defn-traced the same as a regular defn.
+  ;; the macros are for re-frame-10x tracing
+  (put-clojure-indent 'fn-traced :defn)
+  (put-clojure-indent 'defn-traced :defn))
 
 (use-package cider
   :ensure t
