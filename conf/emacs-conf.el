@@ -79,6 +79,10 @@
 ;; automatically reload buffers when the file changes on disk
 (global-auto-revert-mode t)
 
+;; mac os maps menu key to C-p for some reason
+;; I made the menu button F13 with Karabiner
+(define-key key-translation-map (kbd "<f13>") (kbd "<menu>"))
+
 (provide 'emacs-settings)
 
 ;;; emacs-conf.el ends here
