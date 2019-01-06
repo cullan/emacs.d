@@ -14,7 +14,7 @@
         (files '("emacs" "package-manager" "theme" "font"
                  "whitespace" "winum" "yasnippet" "org"
                  "term" "company" "flycheck" "shell-path"
-                 "paredit" "helm" "magit" "projectile" "elixir"
+                 "paredit" "helm" "magit" "projectile" "elixir" "ruby"
                  "web" "elpy" "clojure" "golang" "slime" "work-timer")))
     (dolist (file files)
       (load (concat base-dir file "-conf.el")))))
