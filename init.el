@@ -13,7 +13,7 @@
   (let ((base-dir "~/.emacs.d/conf/")
         (files '("emacs" "package-manager" "theme" "font"
                  "whitespace" "winum" "yasnippet" "org"
-                 "term" "company" "flycheck" "shell-path"
+                 "term" "company" "flycheck" "shell-path" "markdown"
                  "paredit" "helm" "magit" "projectile" "elixir" "ruby"
                  "web" "elpy" "clojure" "golang" "slime" "work-timer")))
     (dolist (file files)
