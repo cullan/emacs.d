@@ -15,6 +15,7 @@
   :mode "Gemfile\\'"
   :mode "Berksfile\\'"
   :mode "Vagrantfile\\'"
+  :mode ".irbrc\\'"
   :interpreter "ruby"
 
   :init
@@ -36,11 +37,22 @@
     (use-package smartparens-ruby)
     (add-hook 'ruby-mode-hook 'smartparens-strict-mode))
 
-;; run ruby shell
+;; irb (ruby shell)
+(defun inf-ruby-handle-close ()
+  "Automatically close the buffer when the console exits."
+  (when (ignore-errors (get-buffer-process (current-buffer)))
+    (set-process-sentinel (get-buffer-process (current-buffer))
+                          (lambda (proc change)
+                            (when (string-match "\\(finished\\)" change)
+                              (kill-buffer (process-buffer proc)))))))
+
 (use-package inf-ruby
   :ensure t
   :init
-  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode))
+  (add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
+  (add-hook 'inf-ruby-mode-hook 'inf-ruby-handle-close))
+
+
 
 ;; linter for Ruby
 ;; needs to be installed with `gem install rubocop`
