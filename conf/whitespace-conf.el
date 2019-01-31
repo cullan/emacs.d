@@ -13,6 +13,13 @@
                            indentation empty space-after-tab space
                            mark tab-mark newline-mark))
   :config
+  (defun prevent-whitespace-mode-for-modes ()
+    (not (or (derived-mode-p 'helm-mode)
+             (derived-mode-p 'vterm-mode))))
+  (add-function
+   :before-while whitespace-enable-predicate
+   'prevent-whitespace-mode-for-modes)
+
   (global-whitespace-mode 1))
 
 (provide 'whitespace-conf)
