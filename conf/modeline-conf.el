@@ -21,17 +21,19 @@
   :ensure t
   :after smart-mode-line
   :config
-  (rich-minority-mode 1)
   (setq rm-blacklist
         (format "^ \\(%s\\)$"
                 (mapconcat #'identity
                            '("FlyC.*"
+                             "Flymake.*"
+                             "LSP.*"
                              "Projectile.*"
                              "WS"
                              "Helm"
                              "Paredit"
                              "yas")
-                           "\\|"))))
+                           "\\|")))
+  (rich-minority-mode 1))
 
 (provide 'modeline-conf)
 
