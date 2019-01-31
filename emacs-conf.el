@@ -83,6 +83,9 @@
 ;; I made the menu button F13 with Karabiner
 (define-key key-translation-map (kbd "<f13>") (kbd "<menu>"))
 
+;; default to finding files in the home directory
+(setq default-directory (concat (getenv "HOME") "/"))
+
 (provide 'emacs-settings)
 
 ;;; emacs-conf.el ends here
