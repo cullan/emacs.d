@@ -12,7 +12,7 @@
   "Load each of the specified configuration files."
   (let ((base-dir "~/.emacs.d/conf/")
         (files '("emacs" "package-manager" "theme" "font"
-                 "whitespace" "winum" "yasnippet" "org"
+                 "whitespace" "winum" "yasnippet" "org" "sudo"
                  "term" "company" "flycheck" "shell-path" "markdown"
                  "paredit" "helm" "magit" "projectile" "elixir" "ruby"
                  "web" "elpy" "clojure" "golang" "slime" "work-timer")))
