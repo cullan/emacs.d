@@ -8,19 +8,16 @@
 (add-to-list 'load-path "~/.emacs.d/src/")
 (setq custom-file "~/.emacs.d/conf/custom.el") ; custom variables
 
-(defun load-conf-files ()
-  "Load each of the specified configuration files."
-  (let ((base-dir "~/.emacs.d/conf/")
-        (files '("emacs" "package-manager" "theme" "font"
-                 "whitespace" "winum" "yasnippet" "org" "sudo" "lsp"
-                 "term" "company" "flycheck" "shell-path" "markdown"
-                 "paredit" "helm" "magit" "projectile" "elixir" "ruby"
-                 "web" "elpy" "clojure" "golang" "slime" "javascript"
-                 "work-timer")))
-    (dolist (file files)
-      (load (concat base-dir file "-conf.el")))))
+(defun load-directory (dir)
+  "Load all .el files in DIR."
+  (mapc (lambda (f)
+            (load-file (concat (file-name-as-directory dir) f)))
+        (directory-files dir nil "\\.el$")))
 
-(load-conf-files)
+(load "~/.emacs.d/emacs-conf.el")
+(load "~/.emacs.d/package-manager-conf.el")
+
+(load-directory "~/.emacs.d/conf/")
 
 (load custom-file)
 
