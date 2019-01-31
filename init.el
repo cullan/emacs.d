@@ -12,10 +12,11 @@
   "Load each of the specified configuration files."
   (let ((base-dir "~/.emacs.d/conf/")
         (files '("emacs" "package-manager" "theme" "font"
-                 "whitespace" "winum" "yasnippet" "org" "sudo"
+                 "whitespace" "winum" "yasnippet" "org" "sudo" "lsp"
                  "term" "company" "flycheck" "shell-path" "markdown"
                  "paredit" "helm" "magit" "projectile" "elixir" "ruby"
-                 "web" "elpy" "clojure" "golang" "slime" "work-timer")))
+                 "web" "elpy" "clojure" "golang" "slime" "javascript"
+                 "work-timer")))
     (dolist (file files)
       (load (concat base-dir file "-conf.el")))))
 
