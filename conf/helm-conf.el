@@ -18,7 +18,7 @@
    ("<menu>"    . helm-M-x)
    ("C-x C-f" . helm-find-files)
    ("C-x b"   . helm-mini))
-  :config
+  :init
   (helm-mode 1))
 
 (use-package helm-projectile
