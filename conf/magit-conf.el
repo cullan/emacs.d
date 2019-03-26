@@ -11,6 +11,13 @@
   :custom
   (magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256"))))
 
+(use-package forge
+  :ensure t
+  :after magit)
+
+(use-package git-link
+  :ensure t)
+
 (provide 'magit-conf)
 
 ;;; magit-conf.el ends here
