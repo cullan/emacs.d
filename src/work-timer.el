@@ -16,12 +16,22 @@
    "-c" "emacs.message"         ; category
    ))
 
+(defun notify-via-terminal-notifier (title body)
+  "Notifiy with TITLE, BODY via `terminal-notifier`."
+  (call-process
+   "terminal-notifier" nil 0 nil
+   "-message" body
+   "-title" title
+   "-sound" "Blow"
+   "-group" "emacs.message"))
+
 (defun work-timer-notify-take-a-break ()
   "Notify the user that it is time for a break."
-  (notify-via-libnotify
-   "Take a break"           ; message title
-   "Don't try to be a hero" ; message body
-   ))
+  (let ((title "Take a break")
+        (body "Don't try to be a hero"))
+    (if (string-equal system-type "darwin")
+        (notify-via-terminal-notifier title body)
+      (notify-via-libnotify title body))))
 
 (defun work-timer-set-timer ()
   "Set a timer to send the break notification after the specified interval."
