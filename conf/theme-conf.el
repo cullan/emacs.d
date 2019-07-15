@@ -6,8 +6,14 @@
 ;;; Code:
 
 (use-package zenburn-theme
+  :ensure t)
+
+(use-package material-theme
   :ensure t
-  :config (load-theme 'zenburn t))
+  :config (load-theme 'material t))
+
+(use-package dracula-theme
+  :ensure t)
 
 (provide 'theme-conf)
 
