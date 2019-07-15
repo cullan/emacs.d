@@ -86,6 +86,11 @@
 ;; default to finding files in the home directory
 (setq default-directory (concat (getenv "HOME") "/"))
 
+;; add homebrew to path
+(when (string-equal system-type "darwin")
+  (progn (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+         (setq exec-path (append exec-path '("/usr/local/bin")))))
+
 (provide 'emacs-settings)
 
 ;;; emacs-conf.el ends here
