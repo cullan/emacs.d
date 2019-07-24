@@ -6,7 +6,10 @@
 ;;; Code:
 
 (use-package company
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-set-key (kbd "TAB") #'company-indent-or-complete-common))
 
 (provide 'company-conf)
 
