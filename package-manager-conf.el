@@ -20,7 +20,8 @@
                 ("elpy" . "http://jorgenschaefer.github.io/packages/")
                 ("org" . "https://orgmode.org/elpa/"))))
 
-; (package-initialize)
+(when (string-equal system-type "gnu/linux")
+  (package-initialize))
 
 ;; use-package installs and configures the other packages
 (unless (package-installed-p 'use-package)
