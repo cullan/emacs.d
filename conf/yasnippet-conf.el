@@ -11,7 +11,7 @@
   (yas-global-mode 1)
   :hook (elixir-mode . yas-minor-mode))
 
-(use-package clojure-snippets
+(use-package yasnippet-snippets
   :ensure t)
 
 (provide 'yasnippet-conf)
