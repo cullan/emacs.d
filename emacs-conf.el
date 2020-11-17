@@ -74,6 +74,9 @@
 ;; automatically reload buffers when the file changes on disk
 (global-auto-revert-mode t)
 
+;; use hex to specify the char to insert with C-q
+(setq read-quoted-char-radix 16)
+
 ;; mac os maps menu key to C-p for some reason
 ;; I made the menu button F13 with Karabiner
 (define-key key-translation-map (kbd "<f13>") (kbd "<menu>"))
