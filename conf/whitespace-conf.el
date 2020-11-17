@@ -9,13 +9,14 @@
 (use-package whitespace
   :ensure t
   :custom
-  (whitespace-style '(face tabs trailing lines space-before-tab newline
+  (whitespace-style '(face tabs trailing space-before-tab newline
                            indentation empty space-after-tab space
                            mark tab-mark newline-mark))
   :config
   (defun prevent-whitespace-mode-for-modes ()
     (not (or (derived-mode-p 'helm-mode)
-             (derived-mode-p 'vterm-mode))))
+             (derived-mode-p 'vterm-mode)
+             (derived-mode-p 'magit-mode))))
   (add-function
    :before-while whitespace-enable-predicate
    'prevent-whitespace-mode-for-modes)
