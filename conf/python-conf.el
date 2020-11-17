@@ -5,23 +5,14 @@
 
 ;;; Code:
 
-(use-package pipenv
-  :ensure t
-  :hook (python-mode . pipenv-mode)
-  :init
-  (setq
-   pipenv-projectile-after-switch-function
-   #'pipenv-projectile-after-switch-extended))
-
 (use-package elpy
   :ensure t
-  :after pipenv
-  :custom
-  (elpy-rpc-python-command "python")
-  (python-shell-interpreter "ipython")
-  (python-shell-interpreter-args "-i --simple-prompt")
   :config
-  ; (pyvenv-activate "~/.virtualenvs/default") ; TODO: use current project
+  (setq elpy-rpc-python-command "python3"
+        python-shell-interpreter "ipython"
+        python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
+        elpy-syntax-check-command "~/.emacs.d/elpy/rpc-venv/bin/flake8"
+        elpy-shell-starting-directory 'current-directory)
   (elpy-enable))
 
 (provide 'python-conf)
