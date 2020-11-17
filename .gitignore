@@ -7,3 +7,7 @@ recentf
 /eshell
 /snippets
 /url
+/transient
+projectile.cache
+org-roam.db
+forge-database.sqlite
