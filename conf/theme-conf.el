@@ -1,19 +1,14 @@
 ;;; theme-conf.el --- Select a theme for Emacs
 
 ;;; Commentary:
-;; Make zenburn the Emacs theme.
+;; Load a theme
 
 ;;; Code:
 
-(use-package zenburn-theme
-  :ensure t)
-
-(use-package material-theme
-  :ensure t
-  :config (load-theme 'material t))
-
-(use-package dracula-theme
-  :ensure t)
+(use-package spacemacs-common
+    :ensure spacemacs-theme
+    :config
+    (load-theme 'spacemacs-dark t))
 
 (provide 'theme-conf)
 
