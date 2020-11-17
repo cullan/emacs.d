@@ -19,8 +19,12 @@
 
 (use-package cider
   :ensure t
+  :after company
   :custom
-  (cider-repl-display-help-banner nil))
+  (cider-repl-display-help-banner nil)
+  :hook
+  ((cider-repl-mode . company-mode)
+   (cider-mode . company-mode)))
 
 (use-package helm-cider
   :ensure t
