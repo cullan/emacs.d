@@ -23,27 +23,22 @@
 
 ;; save autosave and backups in one place
 ;;     *not* scattered all over the file system! (FFS)
-(defvar autosave-dir "~/.emacs.d/autosaves/")
-
-(make-directory autosave-dir t)
+(let ((default-directory "~/.config/emacs/")
+      (autosave-dir (expand-file-name "autosaves"))
+      (backup-dir (expand-file-name "backups")))
+  (make-directory autosave-dir t)
+  (setq backup-directory-alist (list (cons "." backup-dir)))
+  `(defun make-auto-save-file-name ()
+     "Create the auto-save file name."
+     (concat ',autosave-dir
+             (if buffer-file-name
+                 (concat "#" (file-name-nondirectory buffer-file-name) "#")
+               (expand-file-name
+                (concat "#%" (buffer-name) "#"))))))
 
 (defun auto-save-file-name-p (filename)
   "Is the file (as FILENAME) an autosave file?"
   (string-match "^#.*#$" (file-name-nondirectory filename)))
-
-(defun make-auto-save-file-name ()
-  "Create the auto-save file name."
-  (concat autosave-dir
-          (if buffer-file-name
-              (concat "#" (file-name-nondirectory buffer-file-name) "#")
-            (expand-file-name
-             (concat "#%" (buffer-name) "#")))))
-
-;; The backup-directory-alist list contains regexp=>directory
-;; mappings. filenames matching a regexp are backed up in the
-;; corresponding directory. Emacs will mkdir if necessary.
-(defvar backup-dir "~/.emacs.d/backups/")
-(setq backup-directory-alist (list (cons "." backup-dir)))
 
 ;; banish tabs to oblivion
 (setq-default indent-tabs-mode nil)
@@ -82,9 +77,6 @@
 ;; mac os maps menu key to C-p for some reason
 ;; I made the menu button F13 with Karabiner
 (define-key key-translation-map (kbd "<f13>") (kbd "<menu>"))
-
-;; default to finding files in the home directory
-(setq default-directory (concat (getenv "HOME") "/"))
 
 ;; add homebrew to path
 (when (string-equal system-type "darwin")
