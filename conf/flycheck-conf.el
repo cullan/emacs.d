@@ -7,6 +7,7 @@
 
 (use-package flycheck
   :ensure t
+  :config (setq flycheck-global-modes '(not python-mode fundamental-mode))
   :init (global-flycheck-mode))
 
 (use-package flycheck-pos-tip
