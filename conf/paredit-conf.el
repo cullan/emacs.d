@@ -9,8 +9,10 @@
 (use-package
  paredit
  :ensure t
- :hook ((emacs-lisp-mode . (lambda () (paredit-mode 1)))
-        (clojure-mode . (lambda () (paredit-mode 1)))))
+ :hook ((emacs-lisp-mode . paredit-mode)
+        (clojure-mode . paredit-mode)
+        (cider-repl-mode . paredit-mode)
+        (cider-mode . paredit-mode)))
 
 (provide 'paredit-conf)
 
