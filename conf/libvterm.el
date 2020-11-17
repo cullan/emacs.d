@@ -39,7 +39,7 @@ TITLE = user@host@lastcmd path  or user@host path"
         (cd-absolute dir))
       (rename-buffer (format "term %s" vterm-pwd) t))))
 
-(defun vterm--exit-hook (buf)
+(defun vterm--exit-hook (buf _event)
   "Kill the buffer after the vterm exits.
 BUF = the buffer the vterm is in"
   (when buf (kill-buffer buf)))
@@ -47,9 +47,9 @@ BUF = the buffer the vterm is in"
 (use-package vterm
   :ensure t
   :init
-  (setq vterm-shell "/usr/local/bin/fish")
-  (add-hook 'vterm-exit-functions 'vterm--exit-hook)
-  (add-hook 'vterm-set-title-functions 'vterm--set-title-hook))
+  (setq vterm-shell "/usr/local/bin/fish"
+        vterm-always-compile-module t)
+  (add-hook 'vterm-exit-functions 'vterm--exit-hook))
 
 (provide 'libvterm)
 
