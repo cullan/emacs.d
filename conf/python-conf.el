@@ -11,7 +11,7 @@
   (setq elpy-rpc-python-command "python3"
         python-shell-interpreter "ipython"
         python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i"
-        elpy-syntax-check-command "~/.emacs.d/elpy/rpc-venv/bin/flake8"
+        elpy-syntax-check-command (locate-user-emacs-file "elpy/rpc-venv/bin/flake8")
         elpy-shell-starting-directory 'current-directory)
   (elpy-enable))
 

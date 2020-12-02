@@ -81,6 +81,9 @@
 ;; I made the menu button F13 with Karabiner
 (define-key key-translation-map (kbd "<f13>") (kbd "<menu>"))
 
+;; default to finding files in the home directory
+(setq default-directory (concat (getenv "HOME") "/"))
+
 ;; add homebrew to path
 (when (string-equal system-type "darwin")
   (progn (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
