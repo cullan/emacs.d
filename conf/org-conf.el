@@ -5,13 +5,25 @@
 
 ;;; Code:
 
+(declare-function org-get-tags "ext:org-mode.el")
+
+(defun tag-match-at-point ()
+  "Make a search string to match any of the tags for the headline at point."
+  (let ((tags (org-get-tags nil t)))
+    (string-join tags "|")))
+
 (use-package org
   :ensure t
   :custom
   (org-directory "~/Documents/org/")
-  (org-agenda-files "~/Documents/org/agenda-files")
+  (org-agenda-files '("~/Documents/org/agenda"))
+  (org-agenda-custom-commands
+   '(("r" "Headlines that share a tag with headline at point" tags (tag-match-at-point))))
   :bind
-  (("C-c i" . org-clock-in)
+  (("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-link)
+   ("C-c i" . org-clock-in)
    ("C-c o" . org-clock-out)))
 
 (use-package org-roam
